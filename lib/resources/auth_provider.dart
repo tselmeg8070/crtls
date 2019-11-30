@@ -2,13 +2,13 @@ import 'dart:async';
 import 'package:http/http.dart' show Client;
 import 'dart:convert';
 import 'package:banker/models/auth_model.dart';
-
+import 'package:banker/env.dart';
 class AuthApiProvider {
   Client client = Client();
-  String url = 'http://192.168.1.9:6000';
+  String url = environment['baseUrl'];
   Future<AuthModel> fetchAuthentication(String _phoneNumber, String _password) async {
     Map<String, String> headers = {"Content-type": "application/json"};
-    String jsonBody = '{"phoneNumber" : "${_phoneNumber}", "password" : "${_password}"}';
+    String jsonBody = '{"phone_number" : "${_phoneNumber}", "password" : "${_password}"}';
     final response = await client.post(url + '/login', headers: headers, body: jsonBody);
     print(response.body.toString());
     if (response.statusCode == 200) {

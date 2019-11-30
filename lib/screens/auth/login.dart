@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:banker/blocs/auth_bloc.dart';
+import 'package:banker/models/auth_model.dart';
 
 class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _emailController = TextEditingController();
+  TextEditingController _phoneNumberController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -34,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 24.0, left: 18.0, right: 18.0),
                 child: TextFormField(
-                  controller: _emailController,
+                  controller: _phoneNumberController,
                   decoration:
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Цахим хаяг'),
                 ),
@@ -48,27 +50,36 @@ class _LoginScreenState extends State<LoginScreen> {
                       border: OutlineInputBorder(), labelText: 'Нууц үг'),
                 ),
               ),
-              Container(
-                  color: Colors.white,
-                  child: Padding(
-                    padding: EdgeInsets.all(18),
-                    child: SizedBox(
-                      height: 50,
-                      child: Container(
-                          color: Colors.green,
-                          child: RaisedButton(
-                              onPressed: () {
+              StreamBuilder(
+                stream: authBloc.authUser,
+                builder: (context, AsyncSnapshot<AuthModel> snapshot) {
+                  if (snapshot.hasData) {
+                    Navigator.pushReplacementNamed(context, '/');
+                  }
+                  return Container(
+                      color: Colors.white,
+                      child: Padding(
+                        padding: EdgeInsets.all(18),
+                        child: SizedBox(
+                          height: 50,
+                          child: Container(
+                              color: Colors.green,
+                              child: RaisedButton(
+                                onPressed: () {
+                                  authBloc.fetchAuthentication(_phoneNumberController.text, _passwordController.text);
+                                },
+                                child: Text(
+                                  'Нэвтэрч орох'?.toUpperCase(),
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white),
+                                ),
+                              )),
+                        ),
+                      ));
+                },
+              ),
 
-                              },
-                            child: Text(
-                              'Бүртгүүлэх'?.toUpperCase(),
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white),
-                            ),
-                          )),
-                    ),
-                  )),
             ],
           ),
         ),

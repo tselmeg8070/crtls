@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:banker/screens/tabview/home.dart';
 
 class MainTabView extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class MainTabView extends StatelessWidget {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
-              Tab(child: Icon(Icons.directions_bike)),
+              Tab(child: HomeScreen()),
               Tab(child: Icon(Icons.directions_bike)),
               Tab(child: Icon(Icons.directions_bike)),
               Tab(child: Icon(Icons.directions_bike)),

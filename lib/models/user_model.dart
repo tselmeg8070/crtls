@@ -6,7 +6,7 @@ class UserModel {
   String _idNumber;
   String _email;
   UserModel(parsedJson) {
-    _id = parsedJson['id'];
+    _id = parsedJson['_id'];
     _fname = parsedJson['fname'];
     _lname = parsedJson['lname'];
     _phoneNumber = parsedJson['phone_number'];

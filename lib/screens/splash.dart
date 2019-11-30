@@ -11,17 +11,21 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 2),
-        () => Navigator.of(context).pushReplacementNamed('/'));
+        () => Navigator.of(context).pushReplacementNamed('/auth'));
   }
-
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-        body: Container(
-        color: Colors.white,
-        child: Center(
-        child: Image.asset('assets/logo.png'),
+        body: Center(
+          child: Container(
+          color: Colors.white,
+          child: Center(
+          child: Container(
+              width: screenSize.width*0.5,
+              child: Image.asset('assets/logo.png')),
       ),
-    ));
+    ),
+        ));
   }
 }
