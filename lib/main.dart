@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.green,
         accentColor: Colors.cyan[600],
       ),
-      initialRoute: '/auth',
+      initialRoute: '/',
         routes: {
           '/': (context) => MainTabView(),
           '/splash': (context) => SplashScreen(),

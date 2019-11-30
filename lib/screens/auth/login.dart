@@ -12,15 +12,24 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[50],
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+      ),
+      resizeToAvoidBottomPadding: true,
       body: Center(
         child: Padding(
           padding: EdgeInsets.only(top: screenSize.height*0.1),
-          child: Column(
+          child: ListView(
             children: <Widget>[
-              Image.asset(
-                'assets/logo.png',
-                fit: BoxFit.fitHeight,
-                width: screenSize.width*0.5,
+              Container(
+                height: screenSize.height*0.3,
+                child: Image.asset(
+                  'assets/logo.png',
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 24.0, left: 18.0, right: 18.0),
@@ -33,11 +42,33 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 24.0, left: 18.0, right: 18.0),
                 child: TextFormField(
-                  controller: _emailController,
-                  decoration:
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'Нууц үг'),
+                  obscureText: true,
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(), labelText: 'Нууц үг'),
                 ),
               ),
+              Container(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: EdgeInsets.all(18),
+                    child: SizedBox(
+                      height: 50,
+                      child: Container(
+                          color: Colors.green,
+                          child: RaisedButton(
+                              onPressed: () {
+
+                              },
+                            child: Text(
+                              'Бүртгүүлэх'?.toUpperCase(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white),
+                            ),
+                          )),
+                    ),
+                  )),
             ],
           ),
         ),

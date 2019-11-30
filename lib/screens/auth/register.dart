@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class Register extends StatefulWidget {
   _RegisterState createState() => _RegisterState();
@@ -55,6 +56,13 @@ class _RegisterState extends State<Register> {
                     child: Container(
                         color: Colors.green,
                         child: RaisedButton(
+                          onPressed:  () async {
+                            String url = 'http://192.168.1.9:6000/register';
+                            Map<String, String> headers = {"Content-type": "application/json"};
+                            String json = '{"fname": "${fnameController.text}", "lname": "${lnameController.text}", "phone_number": "${phoneNumberController.text}", "email": "${emailController.text}", "password": "${passwordController.text}", "id_number": "${idNumberController.text}"}';
+                            Response response = await post(url, headers: headers, body: json);
+                            print(json);
+                          },
                           child: Text(
                             'Бүртгүүлэх'?.toUpperCase(),
                             style: TextStyle(
