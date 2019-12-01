@@ -20,3 +20,17 @@ class UserModel {
   String get idNumber => _idNumber;
   String get email => _email;
 }
+/**
+ * {
+ * income: ,
+ * outcome: ,
+ * savings: ,
+ * outcomes: [
+ *  {title: , amount: },
+ *  {title: , amount: },
+ *  {title: , amount: },
+ *  {title: , amount: },
+ *  {title: , amount: },
+ * ]
+ * }
+*/

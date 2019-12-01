@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:http/http.dart' show Client;
 import 'dart:convert';
-import 'package:banker/models/auth_model.dart';
 import 'package:banker/env.dart';
+import 'package:banker/models/auth_model.dart';
 class AuthApiProvider {
   Client client = Client();
   String url = environment['baseUrl'];

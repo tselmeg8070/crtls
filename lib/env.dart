@@ -1,3 +1,3 @@
 final environment = {
-  'baseUrl': 'http://192.168.1.8:5000'
+  'baseUrl': 'http://192.168.10.40:5000'
 };

@@ -16,7 +16,7 @@ class AuthScreen extends StatelessWidget {
                   ),
               Padding(
                 padding: const EdgeInsets.only(top: 46.0),
-                child: GestureDetector(onTap: () => Navigator.pushNamed(context, '/login'),child: Text('Нэвтрэх', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
+                child: GestureDetector(onTap: () => Navigator.pushNamed(context, '/'),child: Text('Нэвтрэх', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16.0),

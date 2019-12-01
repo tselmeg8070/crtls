@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:banker/screens/tabview/home.dart';
+import 'package:banker/blocs/auth_bloc.dart';
+import 'package:banker/models/auth_model.dart';
+import 'package:banker/screens/auth/login.dart';
+import 'package:banker/screens/tabview/teams.dart';
+
+class MainScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+        stream: authBloc.authUser,
+        builder: (context, AsyncSnapshot<AuthModel> snapshot) {
+          if(snapshot.hasData) {
+            return MainTabView(snapshot: snapshot,);
+          }
+          return LoginScreen();
+        }
+    );
+  }
+}
 
 class MainTabView extends StatelessWidget {
+  final AsyncSnapshot<AuthModel> snapshot;
+  MainTabView({this.snapshot});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,9 +33,9 @@ class MainTabView extends StatelessWidget {
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
-              Tab(child: HomeScreen()),
+              Tab(child: HomeScreen(token: snapshot.data.token)),
               Tab(child: Icon(Icons.directions_bike)),
-              Tab(child: Icon(Icons.directions_bike)),
+              Tab(child: TeamsView()),
               Tab(child: Icon(Icons.directions_bike)),
             ],
           ),
