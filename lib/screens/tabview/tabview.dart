@@ -4,6 +4,7 @@ import 'package:banker/blocs/auth_bloc.dart';
 import 'package:banker/models/auth_model.dart';
 import 'package:banker/screens/auth/login.dart';
 import 'package:banker/screens/tabview/teams.dart';
+import 'package:banker/screens/tabview/personal.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -27,15 +28,14 @@ class MainTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: DefaultTabController(
-        length: 4,
-        initialIndex: 1,
+        length: 3,
+        initialIndex: 0,
         child: Scaffold(
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               Tab(child: HomeScreen(token: snapshot.data.token)),
-              Tab(child: Icon(Icons.directions_bike)),
-              Tab(child: TeamsView()),
+              Tab(child: TeamsView(snapshot: snapshot,)),
               Tab(child: Icon(Icons.directions_bike)),
             ],
           ),
@@ -45,7 +45,6 @@ class MainTabView extends StatelessWidget {
             indicatorColor: Colors.green,
             labelPadding: EdgeInsets.only(left: 0, right: 0),
             tabs: [
-              CustomTab(icon: Icons.dashboard, title: 'Нүүр'),
               CustomTab(icon: Icons.monetization_on, title: 'Хувийн'),
               CustomTab(icon: Icons.people, title: 'Баг'),
               CustomTab(icon: Icons.more_horiz, title: 'Цааш'),

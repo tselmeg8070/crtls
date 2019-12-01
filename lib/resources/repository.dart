@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:banker/models/team_model.dart';
 import 'package:banker/resources/auth_provider.dart';
 import 'package:banker/models/auth_model.dart';
 import 'package:banker/resources/home_provider.dart';
@@ -17,5 +18,8 @@ class Repository {
   final teamsApiProvider = TeamsApiProvider();
   Future<TeamsModel> fetchTeams(String _token) {
     return teamsApiProvider.fetchTeams(_token);
+  }
+  Future<TeamModel> fetchTeam(String _id) {
+    return teamsApiProvider.fetchTeam(_id);
   }
 }

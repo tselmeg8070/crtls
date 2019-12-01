@@ -37,7 +37,6 @@ class _Team {
  *    {_id: (String), title: (String), progress: (int 0 to 100), deadline: (String), amount: (int)},
  *    {_id: (String), title: (String), progress: (int 0 to 100), deadline: (String), amount: (int)},
  *    {_id: (String), title: (String), progress: (int 0 to 100), deadline: (String), amount: (int)},
- *
  *  ]
  * }
 */
